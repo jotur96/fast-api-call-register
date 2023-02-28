@@ -25,7 +25,7 @@ DB_HOST: str = os.getenv('DB_HOST')
 DB_PORT: str = os.getenv('DB_PORT')
 
 database = databases.Database(
-    'postgresql://:12345@localhost:5431/register')
+    'postgresql://root:12345@localhost:5431/register')
 
 
 async def connect_to_db():

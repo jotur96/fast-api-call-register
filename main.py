@@ -4,6 +4,8 @@ from enum import Enum
 
 import os
 
+import uvicorn
+
 # Pydantic
 from pydantic import BaseModel
 from pydantic import Field
@@ -23,7 +25,7 @@ DB_HOST: str = os.getenv('DB_HOST')
 DB_PORT: str = os.getenv('DB_PORT')
 
 database = databases.Database(
-    f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
+    'postgresql://:12345@localhost:5431/register')
 
 
 async def connect_to_db():
@@ -113,3 +115,13 @@ async def getAll():
 
     return {'data': res}
     pass
+
+
+if __name__ == "__main__":
+    try:
+        uvicorn.run("main:app", host="0.0.0.0", port=8003)
+        # input()
+    except Exception as e:
+        print("========== ERROR ===============")
+        print(e)
+        # input("Presione una tecla para salir")

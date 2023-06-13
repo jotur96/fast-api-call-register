@@ -6,7 +6,6 @@ import uvicorn
 
 time_limit = "1690862400000"
 
-
 app = FastAPI()
 
 @app.get('/')
@@ -15,8 +14,7 @@ def home():
 
 @app.get('/validate')
 def validate():
-    return time_limit
-
+    return {"time_limit": time_limit}
 
 
 if __name__ == "__main__":
